@@ -32,7 +32,8 @@ def index():
 
 def main():
     db_session.global_init("db/blogs.db")
-    app.run()
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
 
 
 @login_manager.user_loader
@@ -160,5 +161,4 @@ def news_delete(id):
 
 
 if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host='0.0.0.0', port=port)
+    main()  
